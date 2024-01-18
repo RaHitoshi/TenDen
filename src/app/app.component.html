@@ -1,0 +1,749 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .cartas {
+    width: 33%;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .mlinks{
+    font-weight: bold;
+  }
+
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+    border: 1px solid black;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .w-100 {
+  width: 100% !important;
+  height: 100%;}
+  .carousel-item {
+height: 100%;
+overflow: hidden;
+width: 100%;
+}
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+  #textBm{
+    width: 33%;
+    font-size: x-large;
+    font-weight: bold;
+  }
+  #imgbm{
+    width: 60%;
+  }
+
+  .conttext{
+    background-color: #125699;
+    opacity: 80%;
+    color: #eee;
+  }
+
+  .sizecard{
+    font-size: large;
+  }
+
+  .cartamedia{
+    width: 50%;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<!-- Toolbar -->
+<p id="HInicio"></p>
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top" id="myNavbar">
+  <a class="navbar-brand">
+    <img src="./assets/LogoTenden.png" alt="logo" style="width:40px;">
+  </a>
+  <ul class="navbar-nav ml-auto mlinks">
+    <li class="nav-item">
+      <a class="nav-link" href="#HInicio">INICIO</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#QSomos">¿QUIENES SOMOS?</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#HSocio">HAZTE SOCIO</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#LProductos">PRODUCTOS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ConDir">CONTACTANOS</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="content" role="main">
+  <!-- Highlight Card -->
+
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;" >
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" style="width: 100%; height: 100%; margin-bottom: auto;">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="./assets/Imagen1.1.png" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>COMPARTIENDO JUNTOS BIENESTAR</h1>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="./assets/dp1.png" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="./assets/pd7.png" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<p id="QSomos"></p>
+
+  <div class="card-container conttext sizecard">
+    <div class="cartas"><h2>¿Quiénes Somos?</h2><p>Tenden Club es una comercializadora mexicana, que tiene como objetivo llevar una oportunidad, para generar ingresos a nuestros asociados a través del consumo de una amplia gama de productos.</p></div>
+    <div class="cartas"><h2>Misión</h2><p>Nuestra Misión es compartir Bienestar y prosperidad, misma que es generada en cada compra que realices.</p></div>
+    <div class="cartas"><h2>Visión</h2><p>La visión que tenemos es llegar al mayor número de personas y mejorar su calidad de vida.</p></div>
+    <!-- contenedor -->
+    <p style="justify-content: center; width: 96%; margin-top: 16px; text-align: center;">Para esto te invitamos a que nos ayudes a ayudar y juntos compartamos beneficios de bienestar y económicos a nuestra familia, amigos y conocidos.</p>
+  </div>
+<!--border: 1px solid black;-->
+  <!-- Next Steps -->
+  <!--<h2>Next Steps</h2>
+  <p>What do you want to do next with your app?</p>-->
+
+  <!-- Links -->
+  <div class="card-container sizecard">
+    <div id="textBm"><p style="padding-top: 50%;">PLAN DE BONIFICACIONES MUTUAS</p></div>
+    <div id="imgbm"><img style="width: 100%;" src="./assets/Imagen2.png"></div>
+    <p id="HSocio"></p>
+  </div>
+  
+  <div class="card-container sizecard">
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top: 5%;">
+      <h2 style="text-align: center;">¿COMO FUNCIONA?</h2>
+      <p style="padding: 5%;">Cuando tu compras en el Súper, buscas las ofertas porque necesitas que rinda tu dinero.
+        Te llevas a casa un producto que va a satisfacer una necesidad, pero nunca van a compartir contigo sus ganancias. 
+
+        Por otra parte si eres un distribuidor multinivel, puedes comprar con descuento y 
+        si ganas comisiones por volumen de venta, si y solo si, tu grupo crece.</p>
+        </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen3.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen4.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:25%">
+      <h2 style="text-align: center;">Hazte Socio</h2>
+      <p style="padding: 5%">En el sistema de “Beneficios Mutuos”, no hay niveles, es una sola estructura construida por todos.
+        Y JUNTOS COMPARTAMOS BIENESTAR.</p>
+        </div>
+    </div>
+    <div class="cartamedia conttext" style="position:relative;" >
+      <div style="position: absolute; top: 25%;">
+        <h2 style="text-align: center;">¿Y COMO GANO?</h2>
+        <p style="padding: 32px;vertical-align:middle;">Inicia con un consumo mínimo de $500 pesos con el 30% de descuento o la compra de un paquete a precio preferencial.
+          Y calificas como Socio Activo.
+        <br>Si asocias a una persona, calificas como socio VIP</p>
+      </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen5.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen6.jpg">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:25%">
+      <h2 style="text-align: center;">Bonos</h2>
+      <p style="padding: 5%">Al momento de inscribir una persona, (Referido Directo) tu ganas un Bono de Referencia del 40%,
+        del consumo que realice tu invitado en su quincena de activación. <a routerLink="/info1" routerLinkActive="active">Ver mas</a>
+        </p>        
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="card-container sizecard">
+    <div id="textBm"><p style="padding-top: 50%;">CONOCE NUESTRA LINEA DE PRODUCTOS</p></div>
+    <div id="imgbm"><img style="width: 100%;" src="./assets/Imagen9.png"></div>
+    <p id="LProductos"></p>
+  </div>
+
+  <div class="card-container sizecard">
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top: 5%;">
+      <h2 style="text-align: center;">CAFÉ INMUNOFORCE</h2>
+      <p style="padding: 5%;">Características:<br>
+        Precio: $473.00<br>
+        Bolsa con 250 g<br>
+        Sabores: Americano, Capuchino y Moka<br>       
+        Modo de empleo: Disolver una cantidad al gusto en un taza (250 ml.) 
+        de agua caliente, para obtener una textura más cremosa puede agregar 
+        un sustituto de crema en polvo y disfrute.<br><br>
+        Ingredientes:
+        Ganoderma Lucidum, Gingseng, Vitamina C, Cúrcuma, Jengibre, Té Verde, Moringa.</p>
+        </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen10.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 80%;" src="./assets/Imagen11.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:5%">
+      <h2 style="text-align: center;">SWEET PROTECT</h2>
+      <p style="padding: 5%">Características:<br> Precio: $220.00<br>
+        Bolsa con 250 g<br>
+        Sabores: Manzana verde, Fresa y Vainilla <br>
+        Modo de empleo:<br>
+        En un vaso de 150 ml, agregar un poco de agua o leche temperatura ambiente,
+        agregar el contenido de una cucharada sopera y disolver (NO LICUAR), complementar
+        con leche o agua fría y mezclar. Disfrútelo.<br>Ingredientes:<br>
+        Contiene 1 millón de lactobacillus por cada ml de yogurt preparado, enriquecido
+        con vitamina A, B1, B2, B3, B5, B6, B8, B9, B12, C, D3, E; minerales, Calcio, Yodo,
+        Hierro, Óxido de Magnesio, Cloruro de Sodio y Zinc. Saborizante y aroma natural de Vainilla.
+        </p>
+        </div>
+    </div>
+    <div class="cartamedia conttext" style="position:relative;" >
+      <div style="position: absolute; top: 5%;">
+        <h2 style="text-align: center;">HEALING GEL CORPORAL</h2>
+        <p style="padding: 32px;vertical-align:middle;">
+          Desinflama y elimina el dolor de golpes, calambres, dolor de cabeza, 
+          migraña, dolores articulares y más. Útil en el tratamiento de infecciones,
+          heridas y quemaduras leves de la piel. Auxiliar en casos de gripa, tos, faringitis,
+          amigdalitis, reumas y artritis.<br>
+          Ingredientes:
+          Contiene 1 millón de lactobacillus por cada ml de yogurt preparado, enriquecido con
+          vitamina A, B1, B2, B3, B5, B6, B8, B9, B12, C, D3, E; minerales, Calcio, Yodo, Hierro,
+          Óxido de Magnesio, Cloruro de Sodio y Zinc. Saborizante y aroma natural de Vainilla.
+          </p>
+      </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 80%;" src="./assets/Imagen12.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 60%;" src="./assets/Imagen13.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:10%">
+      <h2 style="text-align: center;">ALIVIA FLEX</h2>
+      <p style="padding: 5%">Ingredientes: Ácido Hialurónico, Cartílago de Tiburón,
+        Calcio de Coral,  Vitamina C,  Cúrcuma,  Sulfato  de Glucosamina, Sulfato de
+        Condroitina, MSM, Omega 3, 6 y 9, Celulosa microcristalina, Estearato de Magnesio,
+        Dioxido de Silicio.<br><br>       
+        Beneficios: Antiinflamatorio, que se traduce en 
+        menos hinchazón y dolor en las articulaciones, 
+         originado por dolencias como la artritis, gota, 
+        Osteoartritis, ácido úrico. Auxiliar en el mantenimiento 
+        de ligamentos y tendones. Útil para aliviar lesiones en 
+        los codos, rodillas, manos y caderas como producto del 
+        ejercicio o actividad física. Evita el desgaste de los tejidos 
+        articulares.</p>        
+        </div>
+    </div>
+    <div class="cartamedia conttext" style="position:relative;" >
+      <div style="position: absolute; top: 10%;">
+        <p style="padding: 32px;vertical-align:middle;">
+          Convierte los alimentos en energía y son aprovechados a la perfección,
+          posee propiedades que aceleran el metabolismo para la quema de grasas e
+          hidratos de carbono, además contribuye a la masa muscular, Contribuye a la
+          buena salud de los huesos.<br><br>
+          Ingredientes: L-Carnitina Furmarato, Lecitina de Soya, Gluconato 
+          de Margnesio, Ácido Ascórbico (Vitamina C), Vitamina A, Vitamina 
+          B1, B2,  B3,  B5,  B6, B8, B9, B12, Vitamina D3, Vitamina E, Calcio, 
+          Yodo, Hierro, Magnesio, Cloruro de Sodio, Cloruro de Potasio, Óxido 
+          de Zinc. </p>
+      </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 50%;" src="./assets/Imagen14.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen15.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:25%">
+      <h2 style="text-align: center;">CLOROFILA</h2>
+      <p style="padding: 5%">Es un desintoxicante natural. Purifica y oxigena la sangre,
+        Aumenta el recuento de los glóbulos rojos y regula los niveles de hierro, Acelera
+        la cicatrización. Ayuda en el control de nivel en los triglicéridos y colesterol.<br>
+        Ingredientes: Extracto de Clorofila, Alga espirulina, Extracto de Hierbabuena, Aceite 
+        de menta piperita </p>        
+        </div>
+    </div>
+    <div class="cartamedia conttext" style="position:relative;" >
+      <div style="position: absolute; top: 15%;">
+        <h2 style="text-align: center;">ALOE VERA</h2>
+        <p style="padding: 32px;vertical-align:middle;">Auxiliar en problemas digestivos,
+          Laringitis, Irritación bucal,  Acidez estomacal, Indigestión, Estreñimiento, Úlcera
+          gástrica, Colitis y Colon Irritable, Diarrea, Nauseas y Vómitos, Hemorroides.<br><br>
+          Ingredientes: Agua purificada, Aloe barbadensis (Sábila), Ácido Citrico, Conservador,
+          Saborizante, Goma Xantano, Vitamina C (Ácido ascórbico) y Estevia. </p>
+      </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 50%;" src="./assets/Imagen16.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen17.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:5%">
+      <h2 style="text-align: center;">COLAGENO</h2>
+      <p style="padding: 32px;vertical-align:middle;">1. GUANÁBANA Y CÚRCUMA.<br>
+        Estimula el Sistema Inmunológico <br>2. HUESOS Y ARTICULACIONES<br>
+        Fortalece Huesos y Articulaciones<br>3. CON ARÁNDANOS<br>
+        Retrasa el Envejecimiento.<br>4. CON ÁCIDO HIALURÓNICO<br>
+        Fortalece piel, Cabello y Uñas.
+      </p>        
+        </div>
+    </div>
+    <div class="cartamedia conttext" style="position:relative;" >
+      <div style="position: absolute; top: 15%;">
+        <h2 style="text-align: center;">POWER FULL PROSTATE</h2>
+        <p style="padding: 32px;vertical-align:middle;">Fórmula diseñada para el cuidado y protección de la 
+                                  glándula prostática. Ayuda a eliminar el dolor o la sensación 
+                            de ardor, útil si hay dificultad de orinar o micción frecuente      durante la noche.
+                          <br><br>Ingredientes: Saw Palmeto, Ciruelo Africano, Licopeno, 
+                          Semilla de Calabaza, Vitamina E y Zinc.</p>
+      </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 70%;" src="./assets/Imagen18.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 70%;" src="./assets/Imagen19.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:15%">
+      <h2 style="text-align: center;">VIGOR MEN</h2>
+      <p style="padding: 32px;vertical-align:middle;">Te ayuda a incrementa tus niveles de energía, Mejora la libido,        Aumenta la concentración, Potencia la autoestima, confianza y fertilidad. Útil en casos de disfunción eréctil. Mejora el desempeño sexual.
+        <br>Ingredientes: Damiana, Maca, Ginseng, Garañona, Zarzaparrilla, Saw palmeto, Guaraná, Jalea real, L-Arginina, Vitamina, B1, B2, B12, Zinc y Cobre. 
+      </p>        
+        </div>
+    </div>
+    <div class="cartamedia conttext" style="position:relative;" >
+      <div style="position: absolute; top: 5%;">
+        <h2 style="text-align: center;">POLLUX</h2>
+        <p style="padding: 32px;vertical-align:middle;">Mantiene sanas y activas las células previniendo y ayudando a mejorar         posibles estados de salud comprometidos. 
+        <BR><BR>
+          Ingredientes: Acerola, Acaí, Arándanos, Jengibre, Granada, Mangostino, Noni, Schisandra, Resveratrol, Semilla de Uva, Vitaminas: A, B1, B2, B3, B5, B6, B8, B9, B12, Ácido Ascórbico (Vitamina C), D3, E. Minerales: Calcio, Cloruro de  sodio, Cloruro de Potasio, Cobre, Cromo,
+          Hierro, Magnesio, Óxido de Zinc, Pantotenato de Calcio, Selenio, Yodo. </p>
+      </div>
+    </div>
+    <div class="cartamedia">
+      <img style="width: 100%;" src="./assets/Imagen20.png">
+    </div>
+    <div class="cartamedia">
+      <img style="width: 70%;" src="./assets/Imagen21.png">
+    </div>
+    <div class="cartamedia conttext" style="position:relative;">
+      <div style="position: absolute; top:5%">
+      <h2 style="text-align: center;">EVER YOUNG</h2>
+      <p style="padding: 32px;vertical-align:middle;">Hidrata y nutre la piel, Ayuda a formar colágeno, Repara y regula la       regeneración celular, Regenera el tejido epidérmico. Evita la flacidez,    Previene el envejecimiento prematuro,
+      <br><br>Ingredientes: Biotina (B7), Vitamina D, Potasio, Ácido Hialurónico, Calcio, Manganeso, Magnesio, Colágeno Hidrolizado, Cola de       Caballo, Isoflavonas de soya. </p>        
+        </div>       
+  </div>
+  <div class="cartamedia conttext" style="position:relative;" >
+    <div style="position: absolute; top: 5%;">
+      <h2 style="text-align: center;">SHAMPOO BERGAMOTA CON MINOXIDIL</h2>
+      <p style="padding: 32px;vertical-align:middle;">Hacen la combinación perfecta. Ayuda a hidratar las fibras capilares y los folículos 
+        pilosos evitando la resequedad del cuero cabelludo obteniendo un cabello más  saludable.
+      <br><br>
+      Ingredientes: El Shampoo 
+      de Bergamota con 
+       Minoxidil, Manzanilla, 
+      Ortiga, Cola de Caballo, 
+       Castaño de indias, 
+        Romero, Salvia, Aloe 
+         Vera</p>
+    </div>
+  </div>
+  <div class="cartamedia">
+    <img style="width: 50%;" src="./assets/Imagen22.png">
+  </div>
+  <div class="cartamedia">
+    <img style="width: 70%;" src="./assets/Imagen23.png">
+  </div>
+  <div class="cartamedia conttext" style="position:relative;">
+    <div style="position: absolute; top:5%">
+    <h2 style="text-align: center;">SHAMPOO DE BERGAMOTA</h2>
+    <p style="padding: 32px;vertical-align:middle;">Si tienes resequedad, exceso de grasa y 
+      sufres de caída de tu cabello, el Shampoo de Bergamota es para ti.<br><br>
+      Ingredientes: Bergamota, Manzanilla, Melissa,   Ortiga, Cola de Caballo, Castaño de indias, Romero, Salvia, Aloe Vera.</p>        
+      </div>       
+</div>
+
+<div class="cartamedia conttext" style="position:relative;" >
+  <div style="position: absolute; top: 5%;">
+    <h2 style="text-align: center;">SHAMPOO 100% NATURAL</h2>
+    <p style="padding: 32px;vertical-align:middle;">BEAUTIFUL HAIR408 Ingredientes: Miel, Romero, cola de Caballo,
+    Adicionado con Biotina y Ginsen. Contenido 500ml.<br><br>
+    BEAUTIFUL HAIR407 Ingredientes: Miel, Aceite de Argan y Aceite de coco,
+    Adicionado con Biotina y Ácido Hialurónico. Contenido 500ml.</p>
+  </div>
+</div>
+<div class="cartamedia">
+  <img style="width: 70%;" src="./assets/Imagen24.png">
+</div>
+<div class="cartamedia">
+  <img style="width: 50%;" src="./assets/Imagen25.png">
+</div>
+<div class="cartamedia conttext" style="position:relative;">
+  <div style="position: absolute; top:5%">
+  <h2 style="text-align: center;">BLOQUEADOR SOLAR</h2>
+  <p style="padding: 32px;vertical-align:middle;">El Bloqueador Solar FPS50+ en crema es un producto de uso externo que protege la piel de los efectos nocivos del Sol. Actúa bloqueando eficientemente los rayos tipo UVA y UBV, evitando con ello las quemaduras solares y otros efectos dañinos 
+    resultantes de la exposición prolongada de la piel al sol.<br><br>
+    Ingredientes: Octil metoxicinamanto, Benzofenona 3, Octil Salicilato, Avobenzona,
+    Octocrileno, Colágeno, Aloe Vera, Caléndula.  </div>       
+</div>
+</div>
+
+  <!--border: solid black 1px;-->
+
+  <!-- Footer -->
+
+
+  <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677" viewBox="0 0 2611.084 485.677">
+    <title>Gray Clouds Background</title>
+    <path id="Path_39" data-name="Path 39" d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z" transform="translate(142.69 -634.312)" fill="#eee"/>
+  </svg>
+
+</div>
+
+<footer class="conttext" style="border: 1px blueviolet solid; ">
+  <!-- Pie de pagina-->
+  <div class="content" style="margin-top: auto;">
+    <div class="card-container sizecard" >
+      <p>Para más información llamar al Teléfono 998 217 8158 o <br> envíanos un mensaje al whatsapp 9983159200 <br>
+        Siguenos en <a style="color: rgb(50, 236, 50);" href="https://www.facebook.com/tenden.clb" target="_blank">FB Tenden Club</a>
+      Correo electronico: <a style="color: rgb(50, 236, 50);" href="mailto:Tendenclub@gmail.com" >Tendenclub@gmail.com </a></p> 
+      
+      </div>
+  </div>
+  <p id="ConDir"></p>
+</footer>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
